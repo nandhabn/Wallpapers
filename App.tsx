@@ -22,10 +22,6 @@ const App = () => {
   function finishIntro() {
     setFirstTime(false);
   }
-  return ( <View>
-    <Mainstack />
-    {/* <Text>hello</Text> */}
-  </View>);
 
   if (splash) {
     console.log(splash);
