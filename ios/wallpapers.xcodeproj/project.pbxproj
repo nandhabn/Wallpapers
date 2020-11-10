@@ -32,6 +32,8 @@
 		A243DB763A424B9F84638973 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F98A476F44334A8C884FFC0B /* Octicons.ttf */; };
 		638D66AFC01C42A6B09645F1 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 877C7B72DC274F6D9B1033B6 /* SimpleLineIcons.ttf */; };
 		F8258D009F6A4ADBB7FAB1ED /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4626D677715A4293A900E0A3 /* Zocial.ttf */; };
+		B373A12615E64258988E7410 /* JustMeAgainDownHere-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1823825BF8B447A38DFFF65E /* JustMeAgainDownHere-Regular.ttf */; };
+		30A0C5680D1C423099BFEC79 /* Raleway.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE686454380A4A89936E8885 /* Raleway.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		F98A476F44334A8C884FFC0B /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		877C7B72DC274F6D9B1033B6 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		4626D677715A4293A900E0A3 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1823825BF8B447A38DFFF65E /* JustMeAgainDownHere-Regular.ttf */ = {isa = PBXFileReference; name = "JustMeAgainDownHere-Regular.ttf"; path = "../src/assets/fonts/JustMeAgainDownHere-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AE686454380A4A89936E8885 /* Raleway.ttf */ = {isa = PBXFileReference; name = "Raleway.ttf"; path = "../src/assets/fonts/Raleway.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +213,8 @@
 				F98A476F44334A8C884FFC0B /* Octicons.ttf */,
 				877C7B72DC274F6D9B1033B6 /* SimpleLineIcons.ttf */,
 				4626D677715A4293A900E0A3 /* Zocial.ttf */,
+				1823825BF8B447A38DFFF65E /* JustMeAgainDownHere-Regular.ttf */,
+				AE686454380A4A89936E8885 /* Raleway.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -368,6 +374,8 @@
 				A243DB763A424B9F84638973 /* Octicons.ttf in Resources */,
 				638D66AFC01C42A6B09645F1 /* SimpleLineIcons.ttf in Resources */,
 				F8258D009F6A4ADBB7FAB1ED /* Zocial.ttf in Resources */,
+				B373A12615E64258988E7410 /* JustMeAgainDownHere-Regular.ttf in Resources */,
+				30A0C5680D1C423099BFEC79 /* Raleway.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,24 +7,11 @@ import {
   Dimensions,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  ScrollView,
 } from 'react-native';
-import {State, PinchGestureHandler} from 'react-native-gesture-handler';
 import {ManageWallpaper, TYPE} from 'react-native-manage-wallpaper';
 import ImageEditor from '@react-native-community/image-editor';
-import Animated, {
-  Value,
-  event,
-  add,
-  cond,
-  eq,
-  call,
-  or,
-  set,
-  block,
-  useCode,
-  multiply,
-} from 'react-native-reanimated';
-import {vec} from 'react-native-redash';
+import {PinchGestureHandler, State} from 'react-native-gesture-handler';
 
 function DisplayWallper(props: any) {
   const {navigation, route} = props;
@@ -37,7 +24,6 @@ function DisplayWallper(props: any) {
   const [zoomheight, setZoomHeight] = useState(Dimensions.get('window').height);
   const [zoomWidth, setZoomWidth] = useState(Dimensions.get('window').width);
   const [modelvisible, showModel] = useState(false);
-  const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (!height || !width) {
       Image.getSize(uri, (h, w) => {
@@ -59,7 +45,7 @@ function DisplayWallper(props: any) {
     <View style={{flex: 1}}>
       <PinchGestureComponent uri={uri} />
       {modelvisible ? (
-        <TouchableWithoutFeedback onPress={() => showModel(!modelvisible)}>
+        <>
           <View
             style={{
               position: 'absolute',
@@ -76,7 +62,10 @@ function DisplayWallper(props: any) {
             <Button onPress={() => setWallpaper(TYPE.LOCK)} name={'Lock'} />
             <Button onPress={() => setWallpaper()} name={'Both'} />
           </View>
-        </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => showModel(!modelvisible)}>
+            <View style={{flex: 1, position: 'absolute', zIndex: 9}} />
+          </TouchableWithoutFeedback>
+        </>
       ) : (
         <></>
       )}
@@ -87,11 +76,15 @@ function DisplayWallper(props: any) {
           height: '25%',
           left: 0,
           right: 0,
+          bottom: 0,
           alignItems: 'center',
           justifyContent: 'space-evenly',
           backgroundColor: '#0008',
           flexDirection: 'row',
           borderRadius: 20,
+          borderBottomStartRadius: 0,
+          borderBottomEndRadius: 0,
+          elevation: 1,
         }}>
         <BottomModel
           navigation={navigation}
@@ -155,50 +148,31 @@ function BottomModel({navigation, model}) {
 }
 
 function PinchGestureComponent({uri}) {
-  const state = new Value(State.UNDETERMINED);
-  const focal = vec.createValue(0, 0);
-  const origin = vec.createValue(0, 0);
-  const baseScale = new Animated.Value(1);
-  const pinchScale = new Animated.Value(1);
-  const scale = Animated.multiply(baseScale, pinchScale);
-  let lastScale = 1;
-  const onGestureEvent = event([
-    {nativeEvent: {focalX: focal.x, focalY: focal.y, scale}},
-    // {useNativeDriver: true},
-  ]);
-  const onHandlerStateChange = ({nativeEvent}) =>
-    block([
-      state.setValue(nativeEvent.state),
-      cond(
-        or(
-          eq(state, State.CANCELLED),
-          eq(state, State.END),
-          eq(state, State.FAILED),
-        ),
-        block([
-          (lastScale *= nativeEvent.scale),
-          baseScale.setValue(lastScale),
-        ]),
-      ),
-      console.log(lastscale),
-    ]);
+  const [x, setX] = useState(1);
+  const [y, setY] = useState(1);
+  const [translateX,setTranslateX] = useState(0)
+  const [translateY,setTranslateY] = useState(0)
+  function gesturehandler(e) {
+    const {focalX, focalY, bvelocity} = e.nativeEvent;
+    // setX(Number(x + x * velocity*100));
+    // setY(Number(y + y * velocity*100));
+    let tempX = 
+    setTranslateX((2*+720)/2)
+    setTranslateX((2*+720)/2)
+    // console.log(State.END)
+  }
+  console.log(x, y);
   return (
-    <>
-      <PinchGestureHandler
-        onGestureEvent={onGestureEvent}
-        onHandlerStateChange={onHandlerStateChange}>
-        <Animated.View style={{flex: 1, backgroundColor: 'black'}}>
-          <Animated.Image
-            source={{uri}}
-            style={{
-              height: '100%',
-              width: '100%',
-              resizeMode: 'cover',
-              transform: [{scale}],
-            }}
-          />
-        </Animated.View>
-      </PinchGestureHandler>
-    </>
+    <PinchGestureHandler onHandlerStateChange={gesturehandler}>
+      <Image
+        source={{uri}}
+        style={{
+          height: '100%',
+          width: '100%',
+          resizeMode: 'cover',
+          transform: [{translateX}, {translateY}],
+        }}
+      />
+    </PinchGestureHandler>
   );
 }

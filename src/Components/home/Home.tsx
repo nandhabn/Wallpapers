@@ -10,15 +10,14 @@ function Home(props) {
     var list = ['avatar-male.png', 'wall1.jpg'];
     setWallpapers(list);
   }, []);
+  console.log('working2');
 
   return (
-    <>
-      <ScrollView style={{backgroundColor: 'black', flex: 1}}>
-        <Context.Provider value={props.navigation}>
-          {renderRows(wallpapers)}
-        </Context.Provider>
-      </ScrollView>
-    </>
+    <ScrollView style={{backgroundColor: 'black', flex: 1}}>
+      <Context.Provider value={props.navigation}>
+        {renderRows(wallpapers)}
+      </Context.Provider>
+    </ScrollView>
   );
 }
 function renderRows(wallpapers) {
@@ -33,8 +32,8 @@ function renderRows(wallpapers) {
   }
   return (
     <>
-      {spilitted.map((val, i) => (
-        <Row image={val} key={i} />
+      {spilitted.map((val, index) => (
+        <Row image={val} key={index} />
       ))}
     </>
   );
